@@ -38,7 +38,7 @@ $ scarb run
 Scripts available via `scarb run`:
 declare               : sncast --profile default --account mainuser declare --fee-token eth
 deploy                : sncast --profile default --account mainuser deploy --fee-token eth
-import                : sncast account import --name mainuser --type argent --add-profile default
+import                : sncast account import --name mainuser --add-profile default
 test                  : snforge test
 verify                : sncast --profile default --account mainuser verify --verifier walnut
 ```
@@ -69,12 +69,17 @@ Running 2 test(s) from tests/
 
 ## Import an exist account
 
+- Note: Use the appropriate `--type` for account import. Options:
+  - oz: OpenZeppelin account
+  - argent: Argent account
+  - braavos: Braavos account
+
 ```sh
 $ STARKNET_RPC="https://starknet-sepolia.g.alchemy.com/starknet/version/rpc/v0_7/<YOUR_ALCHEMY_API_KEY>" \
 && SMART_WALLET_ADDRESS="<YOUR_ACCOUNT_ADDRESS>" \
 && PRIVATE_KEY="<YOUR_ACCOUNT_PRIVATE_KEY>"
 
-$ scarb run import --url "${STARKNET_RPC}" --address "${SMART_WALLET_ADDRESS}" --private-key "${PRIVATE_KEY}"
+$ scarb run import --url "${STARKNET_RPC}" --address "${SMART_WALLET_ADDRESS}" --private-key "${PRIVATE_KEY}" --type argent
 
 ### Output:
 
