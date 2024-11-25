@@ -170,6 +170,15 @@ mod MyAccount {
         self.custom_variable.read()
     }
 
+    #[external(v0)]
+    fn address_conversions(self: @ContractState) -> (ContractAddress, felt252, ContractAddress) {
+        let contract_address = starknet::get_contract_address();
+        let felt_address: felt252 = contract_address.into();
+        let address_again: ContractAddress = felt_address.try_into().unwrap();
+
+        (contract_address, felt_address, address_again)
+    }
+
     // Return the Sequencer contract's address
     fn get_sequencer_address() -> ContractAddress {
         // Use a constant address
