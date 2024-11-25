@@ -8,10 +8,10 @@ edition = "2024_07"
 [dependencies]
 starknet = "2.8.2"
 # starknet = "2.8.5"
+openzeppelin = "0.17.0"
 
 [dev-dependencies]
 snforge_std = { git = "https://github.com/foundry-rs/starknet-foundry", tag = "v0.33.0" }
-openzeppelin = { git = "https://github.com/OpenZeppelin/cairo-contracts.git", tag = "v0.17.0" }
 assert_macros = "2.8.2"
 # assert_macros = "2.8.5"
 
@@ -20,7 +20,7 @@ sierra = true
 
 [scripts]
 test = "snforge test"
-import = "sncast account import --name mainuser --type argent --add-profile default"
+import = "sncast account import --name mainuser --add-profile default"
 declare = "sncast --profile default --account mainuser declare --fee-token eth"
 deploy = "sncast --profile default --account mainuser deploy --fee-token eth"
 verify = "sncast --profile default --account mainuser verify --verifier walnut"
